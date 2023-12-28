@@ -12,6 +12,7 @@ internal class Day01Test {
   @Inject
   lateinit var day01: Day01
 
+
   @BeforeEach
   fun setup() {
     DaggerTestDayComponent.create().inject(this)
