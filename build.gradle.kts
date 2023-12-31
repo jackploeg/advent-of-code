@@ -34,6 +34,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation("tools.aqua:z3-turnkey:4.12.2.1")
     implementation("org.jgrapht:jgrapht-core:1.5.2")
+    implementation("org.ejml:ejml-all:0.43")
 
     // used for generating skeletons
     implementation("com.squareup:kotlinpoet:1.15.3")
