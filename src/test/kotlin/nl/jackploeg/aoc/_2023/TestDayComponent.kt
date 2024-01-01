@@ -1,6 +1,9 @@
 package nl.jackploeg.aoc._2023
 
 import dagger.Component
+import nl.jackploeg.aoc.DayComponent
+import nl.jackploeg.aoc.InputModule
+import nl.jackploeg.aoc._2023.calendar.day01.Day01Test
 import nl.jackploeg.aoc._2023.calendar.day02.Day02Test
 import nl.jackploeg.aoc._2023.calendar.day03.Day03Test
 import nl.jackploeg.aoc._2023.calendar.day04.Day04Test
@@ -10,6 +13,7 @@ import nl.jackploeg.aoc._2023.calendar.day07.Day07Test
 import nl.jackploeg.aoc._2023.calendar.day08.Day08Test
 import nl.jackploeg.aoc._2023.calendar.day09.Day09Test
 import nl.jackploeg.aoc._2023.calendar.day10.Day10AlternativeTest
+import nl.jackploeg.aoc._2023.calendar.day10.Day10Test
 import nl.jackploeg.aoc._2023.calendar.day11.Day11Test
 import nl.jackploeg.aoc._2023.calendar.day12.Day12Test
 import nl.jackploeg.aoc._2023.calendar.day13.Day13Test
@@ -18,6 +22,7 @@ import nl.jackploeg.aoc._2023.calendar.day15.Day15Test
 import nl.jackploeg.aoc._2023.calendar.day16.Day16Test
 import nl.jackploeg.aoc._2023.calendar.day17.Day17Test
 import nl.jackploeg.aoc._2023.calendar.day18.Day18AlternativeTest
+import nl.jackploeg.aoc._2023.calendar.day18.Day18Test
 import nl.jackploeg.aoc._2023.calendar.day19.Day19Test
 import nl.jackploeg.aoc._2023.calendar.day20.Day20Test
 import nl.jackploeg.aoc._2023.calendar.day21.Day21Test
@@ -26,12 +31,6 @@ import nl.jackploeg.aoc._2023.calendar.day23.Day23Test
 import nl.jackploeg.aoc._2023.calendar.day24.Day24Test
 import nl.jackploeg.aoc._2023.calendar.day25.Day25Test
 import javax.inject.Singleton
-
-import nl.jackploeg.aoc.DayComponent
-import nl.jackploeg.aoc.InputModule
-import nl.jackploeg.aoc._2023.calendar.day01.Day01Test
-import nl.jackploeg.aoc._2023.calendar.day10.Day10Test
-import nl.jackploeg.aoc._2023.calendar.day18.Day18Test
 
 @Singleton
 @Component(modules = [InputModule::class])
