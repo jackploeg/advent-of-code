@@ -1,8 +1,7 @@
 package nl.jackploeg.aoc._2023.calendar.day01
 
-import javax.inject.Inject
-
 import nl.jackploeg.aoc.generators.InputGenerator.InputGeneratorFactory
+import javax.inject.Inject
 
 class Day01 @Inject constructor(
   private val generatorFactory: InputGeneratorFactory,
