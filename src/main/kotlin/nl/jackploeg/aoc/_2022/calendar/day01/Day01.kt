@@ -2,19 +2,35 @@ package nl.jackploeg.aoc._2022.calendar.day01
 
 import javax.inject.Inject
 import nl.jackploeg.aoc.generators.InputGenerator.InputGeneratorFactory
+import nl.jackploeg.aoc.utilities.readStringFile
 
 class Day01 @Inject constructor(
   private val generatorFactory: InputGeneratorFactory,
 ) {
-  fun partOne(filename: String) =
-      generatorFactory.forFile(filename).readAs(::day01) { input ->
-    -1
-  }
+    // get max load
+    fun partOne(fileName: String): Int {
+        return readElfLoads(fileName).first()
+    }
 
-  fun partTwo(filename: String) =
-      generatorFactory.forFile(filename).readAs(::day01) { input ->
-    -1
-  }
+    // get top 3 max load
+    fun partTwo(fileName: String): Int {
+        return readElfLoads(fileName).take(3).reduce { sum, load -> sum + load }
+    }
 
-  private fun day01(line: String) = 4
+    fun readElfLoads(fileName: String): List<Int> {
+        val loadSums = mutableListOf<Int>()
+        val loads = readStringFile(fileName)
+
+        var currentLoad = 0
+        for (load in loads) {
+            if (load == "") {
+                loadSums.add(loadSums.size, currentLoad)
+                currentLoad = 0
+            } else {
+                currentLoad += Integer.valueOf(load)
+            }
+        }
+        loadSums.add(loadSums.size, currentLoad)
+        return loadSums.sortedDescending()
+    }
 }

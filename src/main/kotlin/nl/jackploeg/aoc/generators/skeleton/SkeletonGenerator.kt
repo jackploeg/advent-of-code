@@ -11,7 +11,7 @@ class SkeletonGenerator(private val year: String, private val day: String) {
     DayClass.generateDayClass(year, day)
     Readme.generateREADME(year, day)
     TestClass.generateTestClass(year, day)
-    Input.generateInput(year, day)
+//    Input.generateInput(year, day)
     Component.setupTestComponent(year, day)
   }
 }
