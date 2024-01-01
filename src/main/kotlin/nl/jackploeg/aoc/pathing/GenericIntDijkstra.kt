@@ -9,12 +9,12 @@ import nl.jackploeg.aoc.pathing.GenericIntDijkstra.GenericNodeWithCost
 abstract class GenericIntDijkstra<Node : DijkstraNode<Node>> :
   Dijkstra<Node, Int, GenericNodeWithCost<Node>> {
   interface DijkstraNode<Node> {
-    fun neighbors(): Map<Node, Int>
+    fun neighbours(): Map<Node, Int>
   }
 
   data class GenericNodeWithCost<Node : DijkstraNode<Node>>(val node: Node, val cost: Int) :
     DijkstraNodeWithCost<Node, Int> {
-    override fun neighbors() = node.neighbors().map { GenericNodeWithCost(it.key, it.value) }
+    override fun neighbors() = node.neighbours().map { GenericNodeWithCost(it.key, it.value) }
     override fun compareTo(other: DijkstraNodeWithCost<Node, Int>) = cost.compareTo(other.cost())
     override fun node() = node
     override fun cost() = cost
