@@ -23,7 +23,7 @@ class Day21 @Inject constructor(
     todo.add(start)
 
     val reachableCells: MutableSet<Cell> = mutableSetOf(start)
-    println(start)
+//    println(start)
     var iteration = 0
     while (iteration < iterations) {
       iteration++

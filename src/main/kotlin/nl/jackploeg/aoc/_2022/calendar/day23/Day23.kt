@@ -71,7 +71,7 @@ class Day23 @Inject constructor(
                 }
             }
         }
-        if (elves.filter { it.preferredPosition != null }.size == 0) println("No elves moved at step ${step + 1}!")
+        //if (elves.filter { it.preferredPosition != null }.size == 0) println("No elves moved at step ${step + 1}!")
         for (elve in elves) {
             if (elve.preferredPosition != null) {
                 if (candidatePositions.getValue(elve.preferredPosition!!) < 2) {

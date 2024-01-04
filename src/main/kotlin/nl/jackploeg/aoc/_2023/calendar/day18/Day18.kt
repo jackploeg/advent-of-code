@@ -83,16 +83,16 @@ class Day18 @Inject constructor() {
 
         //printList(enclosedCells)
 
-        (minY..maxY).forEach { y ->
-            (minX..maxX).forEach { x ->
-                if (enclosedCells.contains(Edge(x, y)))
-                    print(" ")
-                else if (edges.contains(Edge(x, y)))
-                    print("#")
-                else print(".")
-            }
-            println()
-        }
+//        (minY..maxY).forEach { y ->
+//            (minX..maxX).forEach { x ->
+//                if (enclosedCells.contains(Edge(x, y)))
+//                    print(" ")
+//                else if (edges.contains(Edge(x, y)))
+//                    print("#")
+//                else print(".")
+//            }
+//            println()
+//        }
         return edges.size + enclosedCells.size
     }
 
@@ -117,8 +117,8 @@ class Day18 @Inject constructor() {
                 Direction.DOWN -> edges.add(Edge(lastEdge.x, lastEdge.y + length))
             }
         }
-        println(edges)
-        println(edgeLength/2)
+//        println(edges)
+//        println(edgeLength/2)
 
         var totalValue = 0L
         for (i in 1..edges.size -1 ) {
