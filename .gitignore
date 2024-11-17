@@ -33,4 +33,4 @@ build/*
 .idea/*
 
 # AoC Input repository
-advent-of-code-input/
+/advent-of-code-input/

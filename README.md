@@ -15,3 +15,10 @@ To Generate files for a new daily puzzle run application and enter the year and 
 
 To generate the DaggerTestDayComponent classes: run kaptTestKotlin.
 
+Om files voor een nieuwe dag te maken: run Application en voer jaar en dag in
+
+De files in de advent-of-code-input folder zijn een aparte repository, die kun je in een andere IntelliJ instance openen en daar de files voor de dag aanmaken:
+- dayxx.part1.txt voor de beschirjving van deel 1
+- dayxx.part2.txt voor de beschrijving van deel 2
+- dayxx.test voor de test-input
+- dayxx.input voor de puzzel-input
