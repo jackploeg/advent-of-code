@@ -15,5 +15,9 @@ object Input {
     Files.write(path, "".toByteArray())
     val testpath = Paths.get("$directory/day$day.test")
     Files.write(testpath, "".toByteArray())
+    val part1path = Paths.get("$directory/day$day.part1.txt")
+    Files.write(part1path, "".toByteArray())
+    val part2path = Paths.get("$directory/day$day.part2.txt")
+    Files.write(part2path, "".toByteArray())
   }
 }
