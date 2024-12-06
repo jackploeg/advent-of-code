@@ -25,6 +25,10 @@ object DayClass {
         INPUT_GENERATOR_FACTORY_PACKAGE,
         INPUT_GENERATOR_FACTORY_NAME
       )
+      .addImport(
+        "java.io",
+        "File"
+      )
       .addType(
         TypeSpec.classBuilder("Day$day")
           .primaryConstructor(
@@ -42,13 +46,17 @@ object DayClass {
             FunSpec.builder("partOne")
               .addParameter("filename", String::class)
               .addModifiers()
-              .addStatement("return·generatorFactory.forFile(filename).readAs(::day$day)·{·input·->\n  -1\n}")
+              .returns(Int::class)
+              //.addStatement("return·generatorFactory.forFile(filename).readAs(::day$day)·{·input·->\n  -1\n}")
+              .addStatement("val input = File(filename).readLines()\nreturn -1")
               .build()
           )
           .addFunction(
             FunSpec.builder("partTwo")
               .addParameter("filename", String::class)
-              .addStatement("return·generatorFactory.forFile(filename).readAs(::day$day)·{·input·->\n  -1\n}")
+              .returns(Int::class)
+              //.addStatement("return·generatorFactory.forFile(filename).readAs(::day$day)·{·input·->\n  -1\n}")
+              .addStatement("val input = File(filename).readLines()\nreturn -1")
               .build()
           )
           .addFunction(

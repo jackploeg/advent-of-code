@@ -19,6 +19,18 @@ class Day04 @Inject constructor() {
         return count
     }
 
+    fun partTwo(filename: String): Int {
+        val file = File(filename)
+        val input = file.readLines()
+        var count = 0
+        input.forEachIndexed { vertIndex, s ->
+            s.forEachIndexed { horIndex, c ->
+                count += checkXMas(input, vertIndex, horIndex)
+            }
+        }
+        return count
+    }
+
     private fun checkHorizontal(input: List<String>, vertIndex: Int, horIndex: Int): Int {
         val width = input[0].length
         var count = 0
@@ -142,18 +154,4 @@ class Day04 @Inject constructor() {
         }
         return count
     }
-
-
-    fun partTwo(filename: String): Int {
-        val file = File(filename)
-        val input = file.readLines()
-        var count = 0
-        input.forEachIndexed { vertIndex, s ->
-            s.forEachIndexed { horIndex, c ->
-                count += checkXMas(input, vertIndex, horIndex)
-            }
-        }
-        return count
-    }
-
 }

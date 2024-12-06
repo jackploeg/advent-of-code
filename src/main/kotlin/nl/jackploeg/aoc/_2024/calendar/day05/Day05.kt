@@ -1,31 +1,24 @@
-package nl.jackploeg.aoc._2024.calendar.day5
+package nl.jackploeg.aoc._2024.calendar.day05
 
 import java.io.File
 import javax.inject.Inject
 
-class Day5 @Inject constructor() {
+class Day05 @Inject constructor() {
+
     fun partOne(filename: String): Int {
-        val file = File(filename)
-        val input = file.readLines()
-        val orderRules: MutableList<OrderRule> = mutableListOf()
-        val pageUpdates: MutableList<List<Int>> = mutableListOf()
-        var readingRules = true
-        input.forEach { line ->
-            if (line == "") {
-                readingRules = false
-            } else {
-                if (readingRules) {
-                    val (f, s) = line.split('|')
-                    orderRules.add(OrderRule(f.toInt(), s.toInt()))
-                } else {
-                    pageUpdates.add(line.split(',').map { it.toInt() })
-                }
-            }
-        }
+        val (orderRules: List<OrderRule>, pageUpdates: List<List<Int>>) = readData(filename)
         return pageUpdates.filter { it.isValid(orderRules) }.sumOf { it.getMiddleValue() }
     }
 
     fun partTwo(filename: String): Int {
+        val (orderRules: List<OrderRule>, pageUpdates: List<List<Int>>) = readData(filename)
+        val correctedUpdates = pageUpdates.filter { !it.isValid(orderRules) }.map {
+            it.orderCorrectly(orderRules)
+        }
+        return correctedUpdates.sumOf { it.getMiddleValue() }
+    }
+
+    private fun readData(filename: String): Pair<MutableList<OrderRule>, MutableList<List<Int>>> {
         val file = File(filename)
         val input = file.readLines()
         val orderRules: MutableList<OrderRule> = mutableListOf()
@@ -43,10 +36,7 @@ class Day5 @Inject constructor() {
                 }
             }
         }
-        val correctedUpdates = pageUpdates.filter { !it.isValid(orderRules) }.map {
-            it.orderCorrectly(orderRules)
-        }
-        return correctedUpdates.sumOf { it.getMiddleValue() }
+        return Pair(orderRules, pageUpdates)
     }
 
     data class OrderRule(val first: Int, val second: Int)
