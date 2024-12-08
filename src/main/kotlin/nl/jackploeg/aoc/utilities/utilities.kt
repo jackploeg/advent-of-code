@@ -29,6 +29,7 @@ fun printList(list: List<*>) {
     list.forEach { println(it) }
 }
 
+
 fun leastCommonMultiple(first: BigInteger, second: BigInteger): BigInteger {
     val larger = if (first > second) first else second
     val maxLcm = first * second
@@ -54,3 +55,27 @@ enum class Direction {
         }
 }
 
+enum class Operator {
+    PLUS, MINUS, MULTIPLY, DIVIDE, CONCAT;
+
+    companion object {
+        fun from(char: Char): Operator {
+            return when (char) {
+                '+' -> PLUS
+                '-' -> MINUS
+                '*' -> MULTIPLY
+                '/' -> DIVIDE
+                '|' -> CONCAT
+                else -> throw RuntimeException()
+            }
+        }
+    }
+}
+
+tailrec fun factorial(n: Int, accumulator: Int = 1): Int {
+    return if (n <= 1) {
+        accumulator
+    } else {
+        factorial(n - 1, n * accumulator)
+    }
+}
