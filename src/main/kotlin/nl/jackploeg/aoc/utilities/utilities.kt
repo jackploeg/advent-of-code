@@ -43,6 +43,7 @@ fun leastCommonMultiple(first: BigInteger, second: BigInteger): BigInteger {
     return maxLcm
 }
 
+@Deprecated("Use direction in grid")
 enum class Direction {
     UP, RIGHT, DOWN, LEFT;
 

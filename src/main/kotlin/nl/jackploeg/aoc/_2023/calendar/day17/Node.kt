@@ -1,6 +1,7 @@
 package nl.jackploeg.aoc._2023.calendar.day17
 
-import nl.jackploeg.aoc._2023.calendar.day17.Direction.*
+import nl.jackploeg.aoc.grid.Direction
+import nl.jackploeg.aoc.grid.Direction.*
 
 data class Node(
   val row: Int,
@@ -12,8 +13,8 @@ data class Node(
     val (rowDelta, columnDelta) = when (directionToMove) {
       NORTH -> -1 to  0
       SOUTH ->  1 to  0
-      EAST  ->  0 to  1
-      WEST  ->  0 to -1
+      EAST ->  0 to  1
+      WEST ->  0 to -1
     }
 
     val newRow = row + rowDelta
