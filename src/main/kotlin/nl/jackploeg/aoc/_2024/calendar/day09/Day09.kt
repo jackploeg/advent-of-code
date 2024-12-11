@@ -10,8 +10,6 @@ class Day09 @Inject constructor() {
         return blocks.checksum()
     }
 
-
-
     fun partTwo(filename: String): Long {
         val blocks: MutableList<Int> = readBlocks(filename)
         compactFiles(blocks)
