@@ -2,26 +2,19 @@ package nl.jackploeg.aoc.grid
 
 import java.io.File
 
-//typealias CharacterGrid = MutableMap<Cell, Char>
+class CharacterGrid(val grid: Map<Cell, Char>) : Map<Cell, Char> by grid {
 
-class CharacterGrid() {
-    val grid: MutableMap<Cell, Char> = mutableMapOf()
-
-    fun fromFile(filename: String): CharacterGrid {
-        val rows = File(filename).readLines()
-        for ((rowIndex, row) in rows.withIndex()) {
-            for ((colIndex, char) in row.withIndex()) {
-                this.grid[Cell(rowIndex, colIndex)] = char
-            }
+    companion object {
+        fun fromFile(filename: String): CharacterGrid {
+            val rows = File(filename).readLines()
+            val initGrid = rows.flatMapIndexed { rowIndex, row ->
+                row.mapIndexed { colIndex, char ->
+                    Cell(rowIndex, colIndex) to char
+                }
+            }.associate { it.first to it.second}
+            return CharacterGrid(initGrid)
         }
-        return this
     }
-
-    fun get(cell: Cell) = this.grid.get(cell)
-
-    fun contains(cell: Cell) = this.grid.contains(cell)
-
-    fun getEntries() = this.grid.entries
 
     fun print() {
         val rows = this.grid.keys.map { it.row }.distinct().sorted()

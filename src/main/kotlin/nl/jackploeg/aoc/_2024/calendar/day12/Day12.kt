@@ -9,7 +9,7 @@ class Day12 @Inject constructor() {
     val plots = mutableListOf<Plot>()
 
     fun partOne(filename: String): Int {
-        val grid = CharacterGrid().fromFile(filename)
+        val grid = CharacterGrid.fromFile(filename)
         grid.grid.forEach { plant ->
             if (!plottedPlants.contains(plant.key)) {
                 val newPlot = Plot(plant.value, mutableSetOf<Cell>())
@@ -24,7 +24,7 @@ class Day12 @Inject constructor() {
     }
 
     fun partTwo(filename: String): Int {
-        val grid = CharacterGrid().fromFile(filename)
+        val grid = CharacterGrid.fromFile(filename)
         grid.grid.forEach { plant ->
             if (!plottedPlants.contains(plant.key)) {
                 val newPlot = Plot(plant.value, mutableSetOf<Cell>())
@@ -72,22 +72,5 @@ class Day12 @Inject constructor() {
 
         fun costByPerimeterCount(): Int =
             plants.size * perimeterCount()
-    }
-
-    data class HorizontalPerimeter(val row: Int, val startCol: Int, val direction: Direction) {
-        var length: Int = 1
-            get() = field
-
-        fun incrementLength() {
-            length++
-        }
-    }
-    data class VerticalPerimeter(val col: Int, val startRow: Int, val direction: Direction) {
-        var length: Int = 1
-            get() = field
-
-        fun incrementLength() {
-            length++
-        }
     }
 }

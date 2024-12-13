@@ -12,6 +12,7 @@ import nl.jackploeg.aoc._2024.calendar.day10.Day10Test
 import nl.jackploeg.aoc._2024.calendar.day11.Day11Test
 import nl.jackploeg.aoc._2024.calendar.day12.Day12Test
 import nl.jackploeg.aoc._2024.calendar.day13.Day13Test
+import nl.jackploeg.aoc._2024.calendar.day14.Day14Test
 import javax.inject.Singleton
 import nl.jackploeg.aoc.DayComponent
 import nl.jackploeg.aoc.InputModule
@@ -34,4 +35,5 @@ internal interface TestDayComponent : DayComponent {
   fun inject(day11Test: Day11Test)
   fun inject(day12Test: Day12Test)
   fun inject(day13Test: Day13Test)
+  fun inject(day14Test: Day14Test)
 }
