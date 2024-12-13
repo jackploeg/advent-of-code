@@ -25,6 +25,12 @@ val SURROUNDINGS = arrayOf(NORTH, SOUTH, EAST, WEST, NORTH_EAST, NORTH_WEST, SOU
 
 fun Cell.neighbours() = NEIGHBOURS.map { this + it }
 fun Cell.surroundings() = SURROUNDINGS.map { this + it }
+fun Cell.neighboursWithDirection() = listOf(
+    NeighbourWithDirection(this.north(), Direction.NORTH ),
+    NeighbourWithDirection(this.south(), Direction.SOUTH ),
+    NeighbourWithDirection(this.east(), Direction.EAST ),
+    NeighbourWithDirection(this.west(), Direction.WEST )
+)
 
 fun Cell.north() = this + NORTH
 fun Cell.south() = this + SOUTH
@@ -39,3 +45,5 @@ fun Cell.manhattanDistance(other: Cell) = Math.abs(row - other.row) + Math.abs(c
 
 fun Cell.getAllOnLine(rowDistance: Int, colDistance: Int, count: Int) =
     (0..count).map { Cell(this.row + it*rowDistance, this.col + it * colDistance) }
+
+data class NeighbourWithDirection(val cell: Cell, val direction: Direction)
