@@ -26,16 +26,6 @@ internal class Day50Test {
     assertEquals(-1, day50.partTwo(DAY_50_TEST))
   }
 
-  @Test
-  fun testDay50PartOne() {
-    assertEquals(-1, day50.partOne(DAY_50))
-  }
-
-  @Test
-  fun testDay50PartTwo() {
-    assertEquals(-1, day50.partTwo(DAY_50))
-  }
-
   companion object {
     private const val DAY_50: String = "advent-of-code-input/2025/day50.input"
 
