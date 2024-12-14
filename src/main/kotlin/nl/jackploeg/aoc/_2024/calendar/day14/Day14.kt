@@ -3,6 +3,7 @@ package nl.jackploeg.aoc._2024.calendar.day14
 import nl.jackploeg.aoc.grid.Cell
 import nl.jackploeg.aoc.grid.col
 import nl.jackploeg.aoc.grid.row
+import nl.jackploeg.aoc.grid.surroundings
 import java.io.File
 import javax.inject.Inject
 
@@ -18,24 +19,25 @@ class Day14 @Inject constructor() {
     fun partTwo(filename: String, gridWidth: Int, gridHeight: Int): Int {
         val input = File(filename).readLines()
         val robots = input.map { Robot.fromLine(it) }
-        File("output-2024-14.txt").printWriter().use { out ->
-            (7340..7345).forEach { second ->
-                val robotsAfterMoves =
-                    robots.map { Robot(it.positionAfterMoves(gridWidth, gridHeight, second.toLong()), it.speed) }
-                out.println(second)
+        (0..gridWidth * gridHeight).forEach { second ->
+            val robotsAfterMoves =
+                robots.map { Robot(it.positionAfterMoves(gridWidth, gridHeight, second.toLong()), it.speed) }
+            // 3x3 block of robots indicates that there's a cluster of robots, could be a Christmas tree?
+            if (robotsAfterMoves.any { robot-> robot.position.surroundings().all{neighbour -> robotsAfterMoves.any { it.position == neighbour }} }) {
+                println(second)
                 (0..gridHeight - 1).forEach { row ->
                     (0..gridWidth).forEach { col ->
                         if (robotsAfterMoves.any { it.position.row == row && it.position.col == col }) {
-                            out.print('#')
+                            print('#')
                         } else {
-                            out.print(' ')
+                            print(' ')
                         }
                     }
-                    out.println()
+                    println()
                 }
+                return second
             }
         }
-
         return -1
     }
 
