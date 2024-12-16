@@ -58,10 +58,10 @@ class Day12 @Inject constructor() {
             val borderPlants = plants.filter { it.neighbours().any { !plants.contains(it) } }
             val borders = borderPlants.map { it.neighboursWithDirection().filter { !plants.contains(it.cell) } }.flatten()
             val uniqueBorders = borders.filter { border ->
-                border.direction == Direction.NORTH && !borders.contains(NeighbourWithDirection(Cell(border.cell.row, border.cell.col + 1), Direction.NORTH)) ||
-                border.direction == Direction.SOUTH && !borders.contains(NeighbourWithDirection(Cell(border.cell.row, border.cell.col + 1), Direction.SOUTH)) ||
-                border.direction == Direction.EAST && !borders.contains(NeighbourWithDirection(Cell(border.cell.row +1, border.cell.col), Direction.EAST)) ||
-                border.direction == Direction.WEST && !borders.contains(NeighbourWithDirection(Cell(border.cell.row +1, border.cell.col), Direction.WEST))
+                border.direction == Direction.NORTH && !borders.contains(CellWithDirection(Cell(border.cell.row, border.cell.col + 1), Direction.NORTH)) ||
+                border.direction == Direction.SOUTH && !borders.contains(CellWithDirection(Cell(border.cell.row, border.cell.col + 1), Direction.SOUTH)) ||
+                border.direction == Direction.EAST && !borders.contains(CellWithDirection(Cell(border.cell.row +1, border.cell.col), Direction.EAST)) ||
+                border.direction == Direction.WEST && !borders.contains(CellWithDirection(Cell(border.cell.row +1, border.cell.col), Direction.WEST))
             }
             return uniqueBorders.size
         }

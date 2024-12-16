@@ -26,10 +26,10 @@ val SURROUNDINGS = arrayOf(NORTH, SOUTH, EAST, WEST, NORTH_EAST, NORTH_WEST, SOU
 fun Cell.neighbours() = NEIGHBOURS.map { this + it }
 fun Cell.surroundings() = SURROUNDINGS.map { this + it }
 fun Cell.neighboursWithDirection() = listOf(
-    NeighbourWithDirection(this.north(), Direction.NORTH ),
-    NeighbourWithDirection(this.south(), Direction.SOUTH ),
-    NeighbourWithDirection(this.east(), Direction.EAST ),
-    NeighbourWithDirection(this.west(), Direction.WEST )
+    CellWithDirection(this.north(), Direction.NORTH ),
+    CellWithDirection(this.south(), Direction.SOUTH ),
+    CellWithDirection(this.east(), Direction.EAST ),
+    CellWithDirection(this.west(), Direction.WEST )
 )
 
 fun Cell.north() = this + NORTH
@@ -41,9 +41,33 @@ fun Cell.northWest() = this + NORTH_WEST
 fun Cell.southEast() = this + SOUTH_EAST
 fun Cell.southWest() = this + SOUTH_WEST
 
+fun Cell.left(direction: Direction): Cell = when (direction) {
+    Direction.NORTH -> west()
+    Direction.SOUTH -> east()
+    Direction.EAST -> north()
+    Direction.WEST -> south()
+}
+fun Cell.right(direction: Direction): Cell = when (direction) {
+    Direction.NORTH -> east()
+    Direction.SOUTH -> west()
+    Direction.EAST -> south()
+    Direction.WEST -> north()
+}
+fun Cell.reverse(direction: Direction): Cell = when (direction) {
+    Direction.NORTH -> south()
+    Direction.SOUTH -> north()
+    Direction.EAST -> west()
+    Direction.WEST -> east()
+}
+fun Cell.straightAhead(direction: Direction): Cell = when (direction) {
+    Direction.NORTH -> north()
+    Direction.SOUTH -> south()
+    Direction.EAST -> east()
+    Direction.WEST -> west()
+}
 fun Cell.manhattanDistance(other: Cell) = Math.abs(row - other.row) + Math.abs(col - other.col)
 
 fun Cell.getAllOnLine(rowDistance: Int, colDistance: Int, count: Int) =
     (0..count).map { Cell(this.row + it*rowDistance, this.col + it * colDistance) }
 
-data class NeighbourWithDirection(val cell: Cell, val direction: Direction)
+data class CellWithDirection(val cell: Cell, val direction: Direction)

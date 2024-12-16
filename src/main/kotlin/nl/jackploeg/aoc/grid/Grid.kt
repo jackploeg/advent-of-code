@@ -2,7 +2,12 @@ package nl.jackploeg.aoc.grid
 
 import java.io.File
 
-class CharacterGrid(val grid: Map<Cell, Char>) : Map<Cell, Char> by grid {
+class CharacterGrid(val grid: MutableMap<Cell, Char>) : Map<Cell, Char> by grid {
+
+    fun setValue(cell: Cell, value: Char) {
+        this.grid.remove(cell)
+        this.grid[cell] = value
+    }
 
     companion object {
         fun fromFile(filename: String): CharacterGrid {
@@ -12,7 +17,8 @@ class CharacterGrid(val grid: Map<Cell, Char>) : Map<Cell, Char> by grid {
                     Cell(rowIndex, colIndex) to char
                 }
             }.associate { it.first to it.second}
-            return CharacterGrid(initGrid)
+
+            return CharacterGrid(initGrid.toMutableMap())
         }
     }
 
