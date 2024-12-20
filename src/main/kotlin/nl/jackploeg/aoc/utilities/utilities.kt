@@ -25,11 +25,6 @@ fun repeatString(input: String, repeat: Int, separator: Char) : String {
     return result.toString()
 }
 
-fun printList(list: List<*>) {
-    list.forEach { println(it) }
-}
-
-
 fun leastCommonMultiple(first: BigInteger, second: BigInteger): BigInteger {
     val larger = if (first > second) first else second
     val maxLcm = first * second
@@ -80,3 +75,20 @@ tailrec fun factorial(n: Int, accumulator: Int = 1): Int {
         factorial(n - 1, n * accumulator)
     }
 }
+
+fun String.extractInts(): List<Int> = Regex("""-?\d+""").findAll(this).map { it.value.toInt() }.toList()
+fun String.intsToSet(): Set<Int> = Regex("""-?\d+""").findAll(this).mapTo(mutableSetOf()) { it.value.toInt() }
+fun String.extractLongs(): List<Long> = Regex("""-?\d+""").findAll(this).map { it.value.toLong() }.toList()
+fun String.extractDoubles(): List<Double> = Regex("""-?\d+(\.\d+)?""").findAll(this).map { it.value.toDouble() }.toList()
+fun String.extractWords(): List<String> = Regex("""\w+""").findAll(this).map { it.value }.toList()
+
+fun List<String>.splitOnFirstEmptyLine(): List<List<String>> {
+    val firstEmptyLine = this.indexOfFirst { it.isEmpty() }
+   return if (firstEmptyLine == -1) {
+        listOf(this)
+    } else {
+        listOf(this.subList(0, firstEmptyLine), this.subList(firstEmptyLine + 1, this.size))
+    }
+}
+
+

@@ -20,6 +20,15 @@ class CharacterGrid(val grid: MutableMap<Cell, Char>) : Map<Cell, Char> by grid 
 
             return CharacterGrid(initGrid.toMutableMap())
         }
+        fun withSize(size: Int): CharacterGrid {
+            val grid = mutableMapOf<Cell, Char>()
+            for (row in 0 until size) {
+                for (col in 0 until size) {
+                    grid[Cell(row, col)] = '.'
+                }
+            }
+            return CharacterGrid(grid)
+        }
     }
 
     fun print() {
