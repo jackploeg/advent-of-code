@@ -17,7 +17,7 @@ class Day21 @Inject constructor(
         solve(input, indirections = 26)
     }
 
-    private fun solve(input: Sequence<String>, indirections: Int): Int {
+    private fun solve(input: Sequence<String>, indirections: Int): Long {
         return input.sumOf { code ->
             val length = memoizedGetPathLength(NUMERIC_PAD, code, indirections)
             val size = code.take(3).toInt()
@@ -30,9 +30,9 @@ class Day21 @Inject constructor(
 
     private val memoizedPaths = ::paths.memoize()
 
-    private fun getPathLength(keyPad: Map<Char, Key>, code: String, indirections: Int): Int {
+    private fun getPathLength(keyPad: Map<Char, Key>, code: String, indirections: Int): Long {
         if (indirections == 0) {
-            return code.length
+            return code.length.toLong()
         }
 
         val minLength = "A${code}".toList()

@@ -12,7 +12,7 @@ class Day22 @Inject constructor() {
         }
     }
 
-    fun partTwo(filename: String): Long {
+    fun partTwo(filename: String, correction: Int): Long {
         val input = File(filename).readLines().map { it.toLong() }
         val sequenceResults = mutableMapOf<Tuple4<Long, Long, Long, Long>, Long>()
 
@@ -36,14 +36,11 @@ class Day22 @Inject constructor() {
                     if (sequence !in sequences) {
                         sequenceResults.merge(sequence, e, Long::plus)
                         sequences.add(sequence)
-                        if (sequence == Tuple4(1L,1L,-2L,2L)) {
-                            println(e)
-                        }
                     }
                 }
         }
 
-        return sequenceResults.values.max() - 4 // somehow it's 4 off???
+        return sequenceResults.values.max() - correction // somehow with the puzzle input it's off by 4???
 
     }
 

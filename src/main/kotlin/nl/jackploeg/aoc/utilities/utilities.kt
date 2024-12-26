@@ -84,11 +84,26 @@ fun String.extractWords(): List<String> = Regex("""\w+""").findAll(this).map { i
 
 fun List<String>.splitOnFirstEmptyLine(): List<List<String>> {
     val firstEmptyLine = this.indexOfFirst { it.isEmpty() }
-   return if (firstEmptyLine == -1) {
+    return if (firstEmptyLine == -1) {
         listOf(this)
     } else {
         listOf(this.subList(0, firstEmptyLine), this.subList(firstEmptyLine + 1, this.size))
     }
+}
+
+fun List<String>.splitOnEmptyLines(): List<List<String>> {
+    val result: MutableList<List<String>> = mutableListOf()
+    var tmpList = mutableListOf<String>()
+    this.forEach { line ->
+        if (line.isEmpty()) {
+            result.add(tmpList)
+            tmpList = mutableListOf()
+        } else {
+            tmpList.add(line)
+        }
+    }
+    result.add(tmpList)
+    return result
 }
 
 
