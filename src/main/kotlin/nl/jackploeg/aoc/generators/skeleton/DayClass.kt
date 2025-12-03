@@ -25,10 +25,10 @@ object DayClass {
         INPUT_GENERATOR_FACTORY_PACKAGE,
         INPUT_GENERATOR_FACTORY_NAME
       )
-      .addImport(
-        "java.io",
-        "File"
-      )
+//      .addImport(
+//        "java.io",
+//        "File"
+//      )
       .addType(
         TypeSpec.classBuilder("Day$day")
           .primaryConstructor(
