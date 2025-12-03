@@ -2,6 +2,7 @@ package nl.jackploeg.aoc.utilities
 
 import java.io.File
 import java.math.BigInteger
+import kotlin.math.pow
 
 fun readNumbersFile(fileName: String): List<Int> {
     return File(fileName)
@@ -106,4 +107,5 @@ fun List<String>.splitOnEmptyLines(): List<List<String>> {
     return result
 }
 
+infix fun Long.`**`(exponent: Int): Long = toDouble().pow(exponent).toLong()
 

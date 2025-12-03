@@ -1,8 +1,8 @@
 package nl.jackploeg.aoc._2025.calendar.day03
 
 import nl.jackploeg.aoc.generators.InputGenerator.InputGeneratorFactory
+import nl.jackploeg.aoc.utilities.`**`
 import javax.inject.Inject
-import kotlin.math.pow
 
 class Day03 @Inject constructor(
     private val generatorFactory: InputGeneratorFactory,
@@ -20,11 +20,11 @@ class Day03 @Inject constructor(
                         max1Pos = i
                     }
                 }
-                bank.forEachIndexed({ i, j ->
+                bank.forEachIndexed { i, j ->
                     if (i > max1Pos && j > max2) {
                         max2 = j
                     }
-                })
+                }
 
                 sumOfJoltage += max1 * 10 + max2
             }
@@ -54,7 +54,5 @@ class Day03 @Inject constructor(
 
     private fun day03(line: String): LongArray =
         line.toCharArray().map { it.digitToInt().toLong() }.toLongArray()
-
-    infix fun Long.`**`(exponent: Int): Long = toDouble().pow(exponent).toLong()
 
 }
