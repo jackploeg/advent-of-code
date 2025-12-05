@@ -2,6 +2,7 @@ package nl.jackploeg.aoc.utilities
 
 import java.io.File
 import java.math.BigInteger
+import java.security.MessageDigest
 import kotlin.math.pow
 
 fun readNumbersFile(fileName: String): List<Int> {
@@ -108,4 +109,11 @@ fun List<String>.splitOnEmptyLines(): List<List<String>> {
 }
 
 infix fun Long.`**`(exponent: Int): Long = toDouble().pow(exponent).toLong()
+
+@OptIn(ExperimentalStdlibApi::class)
+fun String.md5(): String {
+    val md = MessageDigest.getInstance("MD5")
+    val digest = md.digest(this.toByteArray())
+    return digest.toHexString()
+}
 
