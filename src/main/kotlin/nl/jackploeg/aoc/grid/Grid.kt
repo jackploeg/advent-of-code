@@ -9,6 +9,9 @@ class CharacterGrid(val grid: MutableMap<Cell, Char>) : Map<Cell, Char> by grid 
         this.grid[cell] = value
     }
 
+    fun getHeight(): Int =
+        grid.keys.map { it.row }.distinct().sorted().last()
+
     companion object {
         fun fromFile(filename: String): CharacterGrid {
             val rows = File(filename).readLines()
