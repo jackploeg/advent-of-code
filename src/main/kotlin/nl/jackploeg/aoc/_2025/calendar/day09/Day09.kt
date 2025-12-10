@@ -12,7 +12,7 @@ class Day09 @Inject constructor(
     private val generatorFactory: InputGeneratorFactory,
 ) {
     fun partOne(filename: String): Long {
-        var cells = mutableListOf<Cell>()
+        val cells = mutableListOf<Cell>()
         generatorFactory.forFile(filename).readAs(::day09) { input ->
             input.forEach { cell ->
                 cells.add(cell)

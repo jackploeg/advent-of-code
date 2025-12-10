@@ -15,13 +15,13 @@ class Day10 @Inject constructor(
         generatorFactory.forFile(filename).readAs(::day10) { machine ->
             machine
         }.map { machine ->
-            var initialState = Pair(".".repeat(machine.targetIndicators.length), 0)
+            val initialState = Pair(".".repeat(machine.targetIndicators.length), 0)
             val queue = ArrayDeque(listOf(initialState))
             var minimalStep = 0
             while (!queue.isEmpty() && minimalStep == 0) {
                 val (state, step) = queue.removeFirst()
                 machine.buttons.forEachIndexed() { index, button ->
-                    var newState = state.toCharArray()
+                    val newState = state.toCharArray()
                     button.flips.forEach { pos ->
                         newState[pos] = when (newState[pos]) {
                             '.' -> '#'
@@ -66,7 +66,7 @@ class Day10 @Inject constructor(
         val targetIndicators = parts[0].drop(1).dropLast(1)
 
         val buttons = mutableListOf<Button>()
-        var joltageRequirements = mutableListOf<Int>()
+        val joltageRequirements = mutableListOf<Int>()
 
         for (part in parts.drop(1)) {
             if (part.startsWith("(")) {
